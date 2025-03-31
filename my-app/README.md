@@ -25,7 +25,7 @@ git checkout -b BLOG-003 -создание и переключение ветк�
 -комментарий: БД (список комментариев), стор(отображение в браузере)
 
 Таблицы БД:
--пользователи - users: id / login / password / registed_at / role_id
+-пользователи - users: id / login / password / register_at / role_id
 -роли - roles: id / name
 -статьи - posts: id / title / image_url / content / published_at
 - комментарии - comments: id / author_id / post_id / content
