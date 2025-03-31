@@ -40,3 +40,6 @@ git checkout -b BLOG-003 -создание и переключение ветк�
 / posts: массив post: id / title / imageUrl / publishedAt / commentCount
 - post: id / title / imageUrl / content / publishedAt / comments: массив comment: id / author / content / publishedAt
 -users: массив user: id / login / registeredAt / role
+
+
+json-server --watch src/db.json --port 3005
