@@ -36,6 +36,7 @@ export const server = {
 	 }
 
     await addUser(regLogin, regPassword);
+		
 	 return {
 		 error: null,
          res: createSession(user.role_id),

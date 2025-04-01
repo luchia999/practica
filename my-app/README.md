@@ -43,3 +43,20 @@ git checkout -b BLOG-003 -создание и переключение ветк�
 
 
 json-server --watch src/db.json --port 3005
+
+_--------------------------
+    const WebSocket = require('ws');
+
+    const server = new WebSocket.Server({ port: 3000 });
+
+    server.on('connection', (ws) => {
+        console.log('Клиент подключен');
+
+        ws.on('message', (message) => {
+            console.log(`Получено сообщение: ${message}`);
+        });
+
+        ws.send('Добро пожаловать на сервер WebSocket!');
+    });
+
+    console.log('Сервер запущен на порту 3000');
