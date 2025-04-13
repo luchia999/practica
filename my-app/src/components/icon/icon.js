@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const IconContainer = ({ classHame, id }) => (
-	<div className={classHame}>
+const IconContainer = ({ classHame, id, ...props }) => (
+	<div className={classHame} {...props}>
         <i className={`fa ${id}`} aria-hidden="true" ></i>
 		</div>
 );

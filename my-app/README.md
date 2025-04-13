@@ -36,7 +36,7 @@ git checkout -b BLOG-003 -создание и переключение ветк�
 
 Схема для редакс стора (на клиенте):
 
-- user: id / login / roleId
+- user: id / login / roleId / session
 / posts: массив post: id / title / imageUrl / publishedAt / commentCount
 - post: id / title / imageUrl / content / publishedAt / comments: массив comment: id / author / content / publishedAt
 -users: массив user: id / login / registeredAt / role
@@ -60,3 +60,8 @@ _--------------------------
     });
 
     console.log('Сервер запущен на порту 3000');
+
+
+
+
+
