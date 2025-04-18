@@ -16,12 +16,6 @@ justify-content: flex-end;
 align-items: center;
 `;
 
-const StyledIcon = styled.div`
-&:hover {
-    cursor: pointer;
-}
-`;
-
 const UserName = styled.div`
     font-size: 18px;
 	font-weight: bold;
@@ -43,18 +37,14 @@ const ControlPanelContainer = ({ className }) => {
 	    ) : (
 			<>
 				 <UserName>{login}</UserName>
-				 <StyledIcon>
 			         <Icon
 					 id="fa-sign-aut" margin="0 0 0 10px" onClick={() => dispatch(logout(session))}
 				 />
-				 </StyledIcon>
 			 </>
 		 )}
 	 </RightAligned>
 	 <RightAligned>
-            <StyledIcon> onClick={() => navigate(-1)}
-			<Icon id="fa-backward" margin="10px 0 0 0" />
-			</StyledIcon>
+			<Icon id="fa-backward" margin="10px 0 0 0" onClick={() => navigate(-1)}/>
 			<Link to="/post">
 			<Icon id="fa-file-text-o" margin="10px 0 0 16px"/>
 			</Link>
