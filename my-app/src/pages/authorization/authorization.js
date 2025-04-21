@@ -64,6 +64,7 @@ const AuthorizationContainer = ({ className }) => {
 			}
 
 			dispatch(setUser(res));
+			sessionStorage.setItem('userData', JSON.stringify(res));
 		 });
 	 };
 
@@ -80,8 +81,13 @@ const AuthorizationContainer = ({ className }) => {
 			<form>onSubmit={handleSubmit(onSubmit)}
 			    <Input type="text" placeholder="Логин..."{ ...register('login',{ onChange: () => setServerError(null),
 				})} />
-				<Input type="text" placeholder="Пароль..."{ ...register('password', { onChange: () => setServerError(null),
-				})} />
+				<Input
+				 type="password"
+				 placeholder="Пароль..."
+				 { ...register('password',
+					 { onChange: () => setServerError(null),
+				})}
+				 />
 				<Button type='submit' disabled={!!formError}>
 					Авторизаваться
 					</Button>
