@@ -9,14 +9,16 @@ const initialPostState = {
 	comments: [],
 };
 
-export const postReducer = (stste = initialPostState, action) => {
+export const postReducer = (state = initialPostState, action) => {
 	switch (action.type) {
 		case ACTION_TYPE.SET_POST_DATA:
 			return {
-				...stste,
+				...state,
 				...action.payload,
 			};
+			case ACTION_TYPE.RESET_POST_DATA:
+			return initialPostState;
        default:
-		  return stste;
+		  return state;
 	}
 };
