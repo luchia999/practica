@@ -11,6 +11,7 @@ const AppColumn = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+	position: relative;
 	width: 1000px;
 	min-height:100%;
 	margin: 0 auto;
@@ -20,7 +21,6 @@ const AppColumn = styled.div`
 const Page = styled.div`
     padding: 120px 0 20px;
 `;
-
 export const Blog = () => {
 	const dispatch = useDispatch();
 
