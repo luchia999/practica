@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { CLOSE_MODAL, openModal, removePostAsync } from "../../../../actions";
-import { useRequestServer } from "../../../../hooks";
+//import { useRequestServer } from "../../../../hooks";
+import { useServerRequest } from "../../../../hooks";
 import { Icon } from "../../../../components";
 import styled from "styled-components";
 
 const SpecialPanelContainer = ({ className, id,publishedAt, editButton }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const requestServer = useRequestServer();
+	//const requestServer = useRequestServer();
+	const requestServer = useServerRequest();
 
 		const onPostRemove = (id) => {
 			dispatch(

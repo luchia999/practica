@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react';
-import { Content, H2 } from '../../components';
-import { TableRow, UserRow } from './componenrs';
+import { useSelector } from "react-redux";
+import { PrivateContent, H2 } from '../../components';
+import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
-import styled from "styled-components";
+import { checkAccess } from "../../utils";
+import { selectUserRole } from "../../selectors";
 import { ROLE } from '../../constants';
+import styled from "styled-components";
 
 const UsersContainer = ({ className }) => {
 	const [users, setUsers] = useState([]);
 	const [roles, setRoles] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouIdUpdateUserList, setShouIdUpdateUserList ] = useState(false);
+	const userRole = useSelector(selectUserRole);
 
     const requestServer = useServerRequest();
 
 	useEffect(() => {
-		Promise.all([
-			requestServer('fetchUsers'),
-			requestServer('fetchRoles')
-		]).then(([usersRes, rolesRes]) => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(([usersRes, rolesRes]) => {
 			if (usersRes.error || rolesRes.error) {
 				setErrorMessage(usersRes.error || rolesRes.error);
 				return;
@@ -26,8 +30,7 @@ const UsersContainer = ({ className }) => {
 			setRoles(rolesRes.res);
 		},
 	);
-
-	}, [requestServer, shouIdUpdateUserList]);
+	}, [requestServer, shouIdUpdateUserList, userRole]);
 
 	const onUserRemove = (userId) => {
 		requestServer('removeUser', userId).then(() => {
@@ -37,7 +40,7 @@ const UsersContainer = ({ className }) => {
 
 	return (
 		 <div className={className}>
-			<Content error={errorMessage}>
+			<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
 			  <H2>Пользователи</H2>
 			  <div>
 				 <TableRow>
@@ -58,8 +61,8 @@ const UsersContainer = ({ className }) => {
 					/>
 				))}
 			</div>
-		</Content>
-	</div>
+	     </div>
+	</PrivateContent>
 	);
 };
 
@@ -69,6 +72,5 @@ export const Users = styled(UsersContainer)`
     flex-direction: colimn;
 	margin: 0 auto;
 	width: 570px;
-	font-size: 18px;
 `;
 

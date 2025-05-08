@@ -1,4 +1,4 @@
-import { CLOSE_MODAL } from "./close-modal";
+//import { CLOSE_MODAL } from "./close-modal";
 
 export const ACTION_TYPE = {
 SET_USER: 'SET_USER',

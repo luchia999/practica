@@ -15,10 +15,11 @@ export const sessions = {
 			return;
 		}
 
-		getSession(session.id);
+		deleteSession(session.id);
 	},
 	async access(hash, accessRoles) {
 		const dbsession = await getSession(hash);
-		return !!dbsession.user && accessRoles.includes(dbsession.user.roleId);
+
+		return !!dbsession?.user && accessRoles.includes(dbsession.user.roleId);
 	},
 };

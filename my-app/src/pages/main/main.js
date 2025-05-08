@@ -46,12 +46,13 @@ const MainContainer = ({className}) => {
 		            publishedAt={publishedAt}
 		            commentsCount={commentsCount}
 			     />
-		     ),
+		       ),
 		   )}
 		</div>
 	) : (
  <div className="no-posts-found">Статьи не найдены</div>
  )}
+ </div>
 	{lastPade > 1 && posts.length > 0 && (
 	   <Pagination page={page} lastPade={lastPade} setPage={setPage} />
 	  )}
