@@ -5,9 +5,9 @@ import { Comments, PostContent, PostForm } from "./components";
 import { Error, PrivateContent } from '../../components';
 import { useServerRequest  } from "../../hooks";
 import { RESET_POST_DATA, loadPostAsync } from '../../actions';
-import { selectPost } from "../../selectors";
-import styled from "styled-components";
+import { selectPost} from "../../selectors";
 import { ROLE } from "../../constants";
+import styled from "styled-components";
 
 const PostContainer = ({ className }) => {
 	const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ const PostContainer = ({ className }) => {
 		return null;
 	}
 
-	const PostWithoutError =
+	const SpecificPostPage =
 	isCreating || isEditing ? (
 		<PrivateContent access={[ROLE.ADMIN]} serverError={error}>
 			<div className={className}>
@@ -53,7 +53,7 @@ const PostContainer = ({ className }) => {
 	</div>
 );
 
-	return error ? <Error error={error} /> : PostWithoutError;
+	return error ? <Error error={error} /> : SpecificPostPage;
 };
 
 export const Post = styled(PostContainer)`

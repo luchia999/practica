@@ -44,7 +44,8 @@ const PostFormContainer = ({
 	return (
 	  <div className={className}>
 		  <Input value={imageUrlValue}  placeholder="Изображение..." onChange={onImageChange}/>
-		  <Input value={titleValue} placeholder="Заголовок..." onChange={onTitleChange} />
+		  <Input value={titleValue} placeholder="Заголовок..."
+		  onChange={onTitleChange} />
 			<SpecialPanel
 			id={id}
 			publishedAt={publishedAt}
@@ -53,6 +54,7 @@ const PostFormContainer = ({
 			<Icon
 				id="fa-floppy-o"
 				size='21px'
+				margin="0 10px 0 0"
 				onClick={onSave}
 			/>
 		}

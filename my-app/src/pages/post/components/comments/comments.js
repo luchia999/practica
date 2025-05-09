@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../../../components";
 import { Comment } from './components';
 import { useServerRequest } from "../../../../hooks";
-import { selectUserId } from "../../../../selectors";
+import { selectUserId, selectUserRole } from "../../../../selectors";
 import { addCommentAsync  } from "../../../../actions";
+import { ROLE } from "../../../../constants";
 import styled from "styled-components";
 
 const CommentsContainer = ({ className, comments, postId }) => {
     const {newComment, setNewComment} = useState('');
 	const userId = useSelector(selectUserId);
+	const userRole = useSelector(selectUserRole);
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
 
@@ -18,9 +20,12 @@ const CommentsContainer = ({ className, comments, postId }) => {
 		setNewComment('');
 	};
 
+	const isGuest = userRole  === ROLE.GUEST;
+
 	return (
 		<div className={className}>
-			<div className="nev-comment">
+			{!isGuest && (
+				<div className="nev-comment">
 			<textarea
 			name='comment'
 			value={newComment} placeholder='Коментарии...' onChange={({ target }) => setNewComment(target.value)}
@@ -31,6 +36,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
 				onClick={() => onNewCommentAdd (userId, postId, newComment)}
 				/>
 				</div>
+            )}
 			<div className="comments">
 				{comments.map(({ id, author, content, publishedAt }) => (
 					<Comment
@@ -48,20 +54,20 @@ const CommentsContainer = ({ className, comments, postId }) => {
 };
 
 export const Comments = styled(CommentsContainer)`
-width: 580px;
-margin: 20px auto;
+    width: 580px;
+    margin: 20px auto;
 
-& .nev-comment {
-     display: flex;
-	 width: 100%;
-	 margin: 20px 0 0;
-}
+    & .nev-comment {
+         display: flex;
+	     width: 100%;
+	     margin: 20px 0 0;
+    }
 
-& .nev-comment textarea {
-    width: 550px;
-	heigin: 120px;
-	font-size: 18px;
-    resize: none;
+    & .nev-comment textarea {
+        width: 550px;
+	    heigin: 120px;
+	    font-size: 18px;
+        resize: none;
 
-}
+    }
 `;
