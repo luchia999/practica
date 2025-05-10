@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 export const FooterContainer = ({ className }) => {
-	const [city, setCiry] = useState('');
+	const [city, setCity] = useState('');
 	const [temperature, setTemperature] = useState('');
 	const [weather, setWeather] = useState('');
 	useEffect(() => {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&ints=mrtric&Lang=ru&appid=da88451eefb96ec1019c44710253cca7').then((res) => res.json())
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&ints=mrtric&Lang=ru&appid=da88451eefb96ec1019c44710253cca7'
+
+	  ).
+	  then((res) => res.json())
 	  .then(({name, main, weather }) => {
-           setCiry(name);
+           setCity(name);
 		   setTemperature(Math.round(main.temp));
 		   setWeather(weather[0].description);
-	  });
+	     });
 	}, []);
 
    return (
@@ -20,7 +23,10 @@ export const FooterContainer = ({ className }) => {
 		   <div>web@developer.ru</div>
 		</div>
 		<div>
-		   <div>{city},{' '} {new Date().toLocaleString('ru', { day: 'numeric', month: 'long'})}</div>
+		   <div>
+			{city},{' '}
+			{new Date().toLocaleString('ru', { day: 'numeric', month: 'long'})}
+			</div>
 		   <div>
 			  {temperature} градусов, {weather}
 		   </div>

@@ -1,1 +1,1 @@
-export * from './check-access';
+export * from './sheck-access';

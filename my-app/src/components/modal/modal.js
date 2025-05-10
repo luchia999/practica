@@ -19,8 +19,12 @@ const ModalContainer = ({ className }) => {
 	   <div className="box">
 		<h3>{text}</h3>
 		<div className="buttons">
-	     <Button widit='120px' onClcck={onConfirm}>Да</Button>
-		 <Button widit='120px' onClcck={onCancel}>Отмена</Button>
+	     <Button widit='120px' onClcck={onConfirm}>
+			Да
+		</Button>
+		 <Button widit='120px' onClcck={onCancel}>
+			Отмена
+			</Button>
 	    </div>
 	 </div>
   </div>

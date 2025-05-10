@@ -1,8 +1,16 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Icon } from "../../../../components";
 import styled from "styled-components";
 
-const PostCardContainer = ({ className, id, imageUrl, title, publishedAt, commentsCount}) => {
+const PostCardContainer = ({
+	className,
+	id,
+	imageUrl,
+	title,
+	publishedAt,
+	commentsCount
+}) => {
 	return (
 	   <div className={className}>
 		<Link to={`/post/${id}`}>
@@ -64,3 +72,11 @@ border: 1px solid #000;
 }
 
 `;
+
+PostCard.propTypes = {
+	id: PropTypes.string.isRequired,
+	imageUrl: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	commentsCount: PropTypes.number.isRequired,
+};

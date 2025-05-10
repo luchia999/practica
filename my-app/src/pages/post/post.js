@@ -14,7 +14,7 @@ const PostContainer = ({ className }) => {
 	const dispatch = useDispatch();
 	const params = useParams();
 	const [isLoading, setIsLoading] = useState(true);
-	const isCreating = !!useMatch('/pos');
+	const isCreating = !!useMatch('/post');
 	const isEditing = !!useMatch('/post/:id/edit');
 	const requestServer = useServerRequest();
 	const post = useSelector(selectPost);

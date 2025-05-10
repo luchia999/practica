@@ -5,8 +5,9 @@ import { Icon, Input } from "../../../../components";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { savePostAsync } from "../../../../actions";
 import { useServerRequest } from '../../../../hooks';
-import { snaizeContent} from "./utils";
+import { sanizeContent } from "./utils";
 import styled from "styled-components";
+import { PROP_TYPE } from "../../../../constants";
 
 const PostFormContainer = ({
 	className,
@@ -26,7 +27,7 @@ const PostFormContainer = ({
 	const requestServer = useServerRequest();
 
 	const onSave = () => {
-		const newContent = snaizeContent(contentRef.current.inerHTML);
+		const newContent = sanizeContent (contentRef.current.inerHTML);
 
 		dispatch(
 			savePostAsync(requestServer, {
@@ -98,3 +99,7 @@ export const PostForm = styled(PostFormContainer)`
 		white-space: pre-line;
    }
 `;
+
+PostForm.propTypes = {
+	post: PROP_TYPE.POST.isRequired,
+};

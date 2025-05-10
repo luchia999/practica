@@ -8,7 +8,7 @@ import {
 	selectUserSession
 } from '../../../../selectors';
 import { logout } from '../../../../actions';
-import { checkAccess } from '../../../../utils';
+import { sheckAccess } from '../../../../utils';
 import styled from "styled-components";
 
 const RightAligned = styled.div`
@@ -34,12 +34,12 @@ const ControlPanelContainer = ({ className }) => {
 		sessionStorage.removeItem('userData');
 	};
 
-	const isAdmin = checkAccess([ROLE.ADMIN], roleId);
+	const isAdmin = sheckAccess([ROLE.ADMIN], roleId);
 
 	return (
 	   <div className={className}>
 		 <RightAligned>
-		 {roleId ===ROLE.GUEST ? (
+		 {roleId === ROLE.GUEST ? (
 			<Button>
                 <Link to="/Login">Войти</Link>
 			</Button>

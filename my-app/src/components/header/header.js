@@ -5,8 +5,8 @@ const Discription = styled.div`
     font-style: italic;
 `;
 
-const HeaderContainer = ({classHame }) => (
-	<header className={classHame}>
+const HeaderContainer = ({className }) => (
+	<header className={className}>
 		<Logo />
          <Discription>
 			Веб-технологии

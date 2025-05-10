@@ -9,8 +9,9 @@ import { AuthFormError, Button, H2, Input } from '../../components';
 import { useResetForm } from '../../hooks';
 import { setUser } from '../../actions';
 import { selectUserRole } from '../../selectors';
-import styled from 'styled-components';
 import { ROLE } from '../../constants';
+import styled from 'styled-components';
+
 
 const regFormSchema= yup.object().shape({
     login: yup
@@ -33,7 +34,6 @@ const regFormSchema= yup.object().shape({
 	.required('Заполните повтор пароля')
 	.oneOf([yup.ref('password'), null], 'Повтор пароля не совпадает'),
 });
-
 const RegistrationContainer = ({ className }) => {
      const {
 		register,
@@ -44,7 +44,7 @@ const RegistrationContainer = ({ className }) => {
 		defaultValues: {
 			login: '',
 			password: '',
-			passchech: '',
+			passcheck: '',
 		},
 		resolver: yupResolver(regFormSchema),
 	 });

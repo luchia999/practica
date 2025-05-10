@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { CLOSE_MODAL, openModal, removePostAsync } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { Icon } from "../../../../components";
-import { checkAccess } from '../../../../utils';
+import { sheckAccess } from '../../../../utils';
 import { selectUserRole } from "../../../../selectors";
 import { ROLE } from '../../../../constants';
 import styled from "styled-components";
@@ -29,7 +30,7 @@ const SpecialPanelContainer = ({ className, id,publishedAt, editButton }) => {
 		  );
 	   };
 
-	const isAdmin = checkAccess([ROLE.ADMIN], userRole);
+	const isAdmin = sheckAccess([ROLE.ADMIN], userRole);
 
     return (
 	   <div className={className}>
@@ -73,3 +74,9 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
 	   top: -1px;
    }
 `;
+
+SpecialPanel.propTypes = {
+	id:PropTypes.string.isRequired,
+	publishedAt:PropTypes.string.isRequired,
+	editButton:PropTypes.node.isRequired,
+};

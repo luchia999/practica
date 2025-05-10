@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../../../../../components";
 import {openModal, CLOSE_MODAL, removeCommentAsync } from "../../../../../../actions";
@@ -18,7 +19,7 @@ const CommentContainer = ({ className, postId, id,  author, content, publishedAt
            text: 'Удалить комментарий?',
 		   onConfirm: () => {
 			dispatch(removeCommentAsync(requestServer,postId,  id));
-		    dispatch(CLOSE_MODAL)
+		    dispatch(CLOSE_MODAL);
 		},
 		   onCancel: () => dispatch(CLOSE_MODAL),
 		}),
@@ -90,3 +91,10 @@ export const Comment = styled(CommentContainer)`
    }
 `;
 
+Comment.propTypes = {
+	postId:PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	author: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+};

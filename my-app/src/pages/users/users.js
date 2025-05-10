@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { PrivateContent, H2 } from '../../components';
 import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
-import { checkAccess } from "../../utils";
+import { sheckAccess } from "../../utils";
 import { selectUserRole } from "../../selectors";
 import { ROLE } from '../../constants';
 import styled from "styled-components";
@@ -18,7 +18,7 @@ const UsersContainer = ({ className }) => {
     const requestServer = useServerRequest();
 
 	useEffect(() => {
-		if (!checkAccess([ROLE.ADMIN], userRole)) {
+		if (!sheckAccess([ROLE.ADMIN], userRole)) {
 			return;
 		}
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(([usersRes, rolesRes]) => {
@@ -39,8 +39,8 @@ const UsersContainer = ({ className }) => {
 	};
 
 	return (
-		 <div className={className}>
-			<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+		<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+			<div className={className}>
 			  <H2>Пользователи</H2>
 			  <div>
 				 <TableRow>
@@ -55,7 +55,8 @@ const UsersContainer = ({ className }) => {
 						login={login}
 						registeredAt={registeredAt}
 						roleId={roleId}
-						roles={roles.filter(({ Id: roleId }) => roleId !== ROLE.GUEST,
+						roles={roles.filter(
+							({ Id: roleId }) => roleId !== ROLE.GUEST,
 					  )}
 					  onUserRemove={() => onUserRemove(id)}
 					/>
