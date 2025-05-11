@@ -5,7 +5,7 @@ import { Icon, Input } from "../../../../components";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { savePostAsync } from "../../../../actions";
 import { useServerRequest } from '../../../../hooks';
-import { sanizeContent } from "./utils";
+import { snaizeContent} from "./utils";
 import styled from "styled-components";
 import { PROP_TYPE } from "../../../../constants";
 
@@ -27,7 +27,7 @@ const PostFormContainer = ({
 	const requestServer = useServerRequest();
 
 	const onSave = () => {
-		const newContent = sanizeContent (contentRef.current.inerHTML);
+		const newContent = snaizeContent (contentRef.current.inerHTML);
 
 		dispatch(
 			savePostAsync(requestServer, {

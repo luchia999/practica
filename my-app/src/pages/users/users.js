@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { PrivateContent, H2 } from '../../components';
 import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
-import { sheckAccess } from "../../utils";
+import { сheckAccess } from "../../utils";
 import { selectUserRole } from "../../selectors";
 import { ROLE } from '../../constants';
 import styled from "styled-components";
@@ -18,7 +18,7 @@ const UsersContainer = ({ className }) => {
     const requestServer = useServerRequest();
 
 	useEffect(() => {
-		if (!sheckAccess([ROLE.ADMIN], userRole)) {
+		if (!сheckAccess([ROLE.ADMIN], userRole)) {
 			return;
 		}
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(([usersRes, rolesRes]) => {

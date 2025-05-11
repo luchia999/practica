@@ -1,4 +1,4 @@
-import { getSession, addSession } from "./api";
+import { getSession, addSession, deleteSession } from "./api";
 
 export const sessions = {
 	create(user) {

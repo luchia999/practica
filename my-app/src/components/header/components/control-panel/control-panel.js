@@ -8,7 +8,7 @@ import {
 	selectUserSession
 } from '../../../../selectors';
 import { logout } from '../../../../actions';
-import { sheckAccess } from '../../../../utils';
+import { сheckAccess } from '../../../../utils';
 import styled from "styled-components";
 
 const RightAligned = styled.div`
@@ -34,7 +34,7 @@ const ControlPanelContainer = ({ className }) => {
 		sessionStorage.removeItem('userData');
 	};
 
-	const isAdmin = sheckAccess([ROLE.ADMIN], roleId);
+	const isAdmin = сheckAccess([ROLE.ADMIN], roleId);
 
 	return (
 	   <div className={className}>
