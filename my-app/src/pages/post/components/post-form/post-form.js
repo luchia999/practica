@@ -27,7 +27,7 @@ const PostFormContainer = ({
 	const requestServer = useServerRequest();
 
 	const onSave = () => {
-		const newContent = snaizeContent (contentRef.current.inerHTML);
+		const newContent = snaizeContent (contentRef.current.innerHTML);
 
 		dispatch(
 			savePostAsync(requestServer, {
@@ -94,7 +94,7 @@ export const PostForm = styled(PostFormContainer)`
 
    & .post-text {
         min-height: 80px;
-        border: 1px olid #000;
+        border: 1px solid #000;
 		font-size: 18px;
 		white-space: pre-line;
    }

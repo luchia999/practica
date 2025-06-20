@@ -5,10 +5,8 @@ export const FooterContainer = ({ className }) => {
 	const [temperature, setTemperature] = useState('');
 	const [weather, setWeather] = useState('');
 	useEffect(() => {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&ints=mrtric&Lang=ru&appid=da88451eefb96ec1019c44710253cca7'
-
-	  ).
-	  then((res) => res.json())
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&ints=mrtric&Lang=ru&appid=da88451eefb96ec1019c44710253cca7')
+	  .then((res) => res.json())
 	  .then(({name, main, weather }) => {
            setCity(name);
 		   setTemperature(Math.round(main.temp));

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { PrivateContent, H2 } from '../../components';
 import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
-import { сheckAccess } from "../../utils";
+import { checkAccess } from "../../utils/check-access";
 import { selectUserRole } from "../../selectors";
 import { ROLE } from '../../constants';
 import styled from "styled-components";
@@ -18,9 +18,10 @@ const UsersContainer = ({ className }) => {
     const requestServer = useServerRequest();
 
 	useEffect(() => {
-		if (!сheckAccess([ROLE.ADMIN], userRole)) {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
 			return;
 		}
+
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(([usersRes, rolesRes]) => {
 			if (usersRes.error || rolesRes.error) {
 				setErrorMessage(usersRes.error || rolesRes.error);
@@ -33,14 +34,19 @@ const UsersContainer = ({ className }) => {
 	}, [requestServer, shouIdUpdateUserList, userRole]);
 
 	const onUserRemove = (userId) => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+
 		requestServer('removeUser', userId).then(() => {
 			setShouIdUpdateUserList(!shouIdUpdateUserList);
 		});
 	};
 
 	return (
+		<div className={className}>
 		<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
-			<div className={className}>
+
 			  <H2>Пользователи</H2>
 			  <div>
 				 <TableRow>
@@ -62,8 +68,9 @@ const UsersContainer = ({ className }) => {
 					/>
 				))}
 			</div>
-	     </div>
-	</PrivateContent>
+
+	    </PrivateContent>
+	 </div>
 	);
 };
 

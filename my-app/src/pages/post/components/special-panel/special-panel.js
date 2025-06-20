@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { CLOSE_MODAL, openModal, removePostAsync } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { Icon } from "../../../../components";
-import { сheckAccess } from '../../../../utils';
+import { checkAccess } from '../../../../utils/check-access';
 import { selectUserRole } from "../../../../selectors";
 import { ROLE } from '../../../../constants';
 import styled from "styled-components";
@@ -30,7 +30,7 @@ const SpecialPanelContainer = ({ className, id,publishedAt, editButton }) => {
 		  );
 	   };
 
-	const isAdmin = сheckAccess([ROLE.ADMIN], userRole);
+	const isAdmin = checkAccess([ROLE.ADMIN], userRole);
 
     return (
 	   <div className={className}>

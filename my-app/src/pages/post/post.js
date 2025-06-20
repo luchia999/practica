@@ -5,7 +5,7 @@ import { Comments, PostContent, PostForm } from "./components";
 import { Error, PrivateContent } from '../../components';
 import { useServerRequest  } from "../../hooks";
 import { RESET_POST_DATA, loadPostAsync } from '../../actions';
-import { selectPost} from "../../selectors";
+import { selectPost } from "../../selectors";
 import { ROLE } from "../../constants";
 import styled from "styled-components";
 

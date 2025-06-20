@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '../../../../components';
+import { Icon  } from '../../../icon/icon';
 import styled from "styled-components";
 
 const LargeText = styled.div `
@@ -24,7 +24,7 @@ const LargeText = styled.div `
  </Link>
 );
 
-export const Logo = (LogoContainer)`
-display: flex;
-margin-top: -21px;
+export const Logo = styled(LogoContainer)`
+    display: flex;
+    margin-top: -21px;
 `;

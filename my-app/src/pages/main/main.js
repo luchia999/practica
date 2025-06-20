@@ -63,7 +63,7 @@ const MainContainer = ({className}) => {
 export const Main = styled(MainContainer)`
     display: flex;
 	flex-direction: column;
-	justify-content: soace-between;
+	justify-content: space-between;
 
    & .post-list {
        display: flex;

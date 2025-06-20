@@ -14,7 +14,6 @@ export const updateUserRole = async (hash, userId, newUserRoleId) => {
 		};
 	 }
 
-
 	setUserRole(userId, newUserRoleId);
 
 	return {

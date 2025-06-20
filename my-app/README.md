@@ -62,6 +62,10 @@ _--------------------------
     console.log('Сервер запущен на порту 3000');
 
 
-
+http://localhost:3005/users
+http://localhost:3005/roles
+http://localhost:3005/posts
+http://localhost:3005/comments
+http://localhost:3005/sessions
 
 

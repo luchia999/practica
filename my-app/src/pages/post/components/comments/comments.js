@@ -10,7 +10,7 @@ import { PROP_TYPE, ROLE } from "../../../../constants";
 import styled from "styled-components";
 
 const CommentsContainer = ({ className, comments, postId }) => {
-    const {newComment, setNewComment} = useState('');
+    const [newComment, setNewComment] = useState('');
 	const userId = useSelector(selectUserId);
 	const userRole = useSelector(selectUserRole);
 	const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
 			<textarea
 			name='comment'
 			value={newComment} placeholder='Коментарии...' onChange={({ target }) => setNewComment(target.value)}
-			></textarea>
+			/>
 			<Icon
 			    id="fa-paper-plane-o"
 				margin='0 0 0 10px' size='18px'
@@ -66,7 +66,7 @@ export const Comments = styled(CommentsContainer)`
 
     & .nev-comment textarea {
         width: 550px;
-	    heigin: 120px;
+	    height: 120px;
 	    font-size: 18px;
         resize: none;
 

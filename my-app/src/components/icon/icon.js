@@ -14,10 +14,11 @@ export const Icon = styled(IconContainer)`
 
     &:hover {
         cursor:${({ inactive }) => (inactive ?  'default' :' pointer')};
-    }
+}
 `;
 
 Icon.propTypes = {
 	id: PropTypes.string.isRequired,
 	inactive: PropTypes.bool,
 };
+
