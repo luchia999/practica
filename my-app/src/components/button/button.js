@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
-import { Children } from "react";
 import styled from "styled-components";
 
 const ButtonContainer = ({ children, className, width, ...props }) => {
    return (
 	<button className={className} {...props}>
-		{Children}
+		{children}
 	</button>
    )
  };
